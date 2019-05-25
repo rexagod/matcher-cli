@@ -6,9 +6,9 @@
 	"scripts": {
 		"build:babelify": "node_modules/@babel/cli/bin/babel.js matcher.js -d lib",
 		"build:lint": "node_modules/eslint/bin/eslint.js matcher.js src",
-		"build:uglify": "node_modules/uglify-js/bin/uglifyjs --compress --mangle --warn lib/matcher.js -o build/matcher.min.js",
+		"build:uglify": "node_modules/uglify-js/bin/uglifyjs --compress --mangle --warn lib/matcher.js -o build/matcher.js",
 		"build": "npm run build:lint && npm run build:babelify && npm run build:uglify",
-		"start": "node build/matcher.min.js"
+		"start": "node build/matcher.js"
 	},
 	"repository": {
 		"type": "git",
