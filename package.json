@@ -1,7 +1,7 @@
 {
   "name": "matcher",
   "version": "0.1.0",
-  "description": "A node-only-browser-headless module that handles point matching operations between images.",
+  "description": "Node-based CLI utility for matcher.js",
   "main": "matcher.js",
   "scripts": {
     "build:babelify": "node_modules/@babel/cli/bin/babel.js matcher.js -d lib",

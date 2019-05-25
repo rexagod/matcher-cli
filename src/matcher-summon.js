@@ -26,7 +26,7 @@ async function invoke({host, port}) {
       {args: ['--no-sandbox', '--headless', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   await page.goto(`${host}:${port}`);
-  // do something
+  // get points
   await browser.close();
 }
 
