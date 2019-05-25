@@ -1,1 +1,5 @@
+# node packages
 node_modules
+
+# config
+# .vscode
