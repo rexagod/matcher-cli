@@ -12,7 +12,7 @@ function summoner() {
   };
   // const instance = setup;
   // instance(serverParams);
-  setup(serverParams); // replace by exec --quiet using npm
+  setup(serverParams); // TODO: replace by exec --quiet using npm
   invoke(serverParams);
   // eslint-disable-next-line no-invalid-this
   const {summon: self} = this;

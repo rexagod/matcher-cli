@@ -5,7 +5,7 @@ const pjson = require('../package.json');
 
 function isLoading(bool) {
   if (bool) {
-    process.stdout.write('⏳ ');
+    consoleOut('⏳ ');
   }
 }
 
@@ -15,7 +15,7 @@ async function isOutdated() {
   const packet = {};
   packet.response = await fetch(payload)
       .then((res) => res.json())
-      .catch((e) => process.stderr.write(e));
+      .catch((e) => consoleErr(e));
   packet.current = await packet.response.version;
   packet.user = pjson.version;
   // eslint-disable-next-line   no-invalid-this
@@ -31,30 +31,33 @@ async function isOutdated() {
 async function takeAction() {
   const packet = await isOutdated();
   if (!packet.bool) {
-    process.stdout.write(`\n You are all set!
+    consoleOut(`\n You are all set!
     Current version: ${packet.current} ✔ \n`);
   } else {
-    process.stderr.write(`\n 😱 Found: ${packet.user} 
+    consoleErr(`\n 😱 Found: ${packet.user} 
     ▶ Current: ${packet.current}`);
     upgradeLocal(packet.response);
   }
 }
 
 async function upgradeLocal(res) {
-  process.stdout.write(`\n 🎁 Updating your cli, just a moment!`);
   await fs.writeFileSync('./package.json', JSON.stringify(res, null, '\t'));
   await npmi();
 }
 
 function npmi() {
-  exec('npm i', function(error, stdout, stderr) {
-    process.stdout.write('\nstdout: ' + stdout);
-    process.stdout.write('\nstderr: ' + stderr);
+  exec('npm i && npm i node-fetch', function(error, stdout, stderr) {
+    // consoleOut('\nstdout: ' + stdout);
+    // consoleOut('\nstderr: ' + stderr);
     if (error !== null) {
-      process.stderr.write('exec error: ' + error);
+      // consoleErr('exec error: ' + error);
     }
   });
+  consoleOut('\n Updating... 🎉\n');
 }
+
+const consoleErr = (arg) => process.stderr.write(arg);
+const consoleOut = (arg) => process.stdout.write(arg);
 
 exports.updateModules = {
   isOutdated: isOutdated,
