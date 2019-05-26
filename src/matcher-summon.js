@@ -11,7 +11,7 @@ function summoner() {
 };
 
 function initiateServer() {
-  exec(`live-server ${envVars.MATCHER_PATH} --quiet --port=9990 --no-browser`,
+  exec(`live-server ${envVars.MATCHER_PATH} --quiet --port=9990 --no-browser &`,
       function(error, stdout, stderr) {
         // process.stdout.write(stdout);
         // process.stderr.write(stderr);

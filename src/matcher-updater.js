@@ -49,7 +49,7 @@ async function takeAction() {
 async function upgradeLocal(res) {
   await fs.writeFileSync('./package.json', JSON.stringify(res, null, '\t'));
   await npmi();
-  await process.stdout.write('Updated! 👍');
+  await consoleOut('Done! 👍');
 }
 
 function npmi() {
