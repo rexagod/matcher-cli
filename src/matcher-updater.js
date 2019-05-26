@@ -1,6 +1,7 @@
 const fs = require('fs');
 const exec = require('child_process').exec;
 const fetch = require('node-fetch');
+const envVars = require('../.env_vars.json');
 const pjson = require('../package.json');
 
 function isLoading(bool) {
@@ -11,11 +12,16 @@ function isLoading(bool) {
 
 async function isOutdated() {
   isLoading(true);
-  const payload = 'https://raw.githubusercontent.com/rexagod/matcher-cli/master/package.json?token=AIAAUZZOSAQC6EDTDEHUEPS46I2B6';
+  const payload = envVars.PAYLOAD;
   const packet = {};
   packet.response = await fetch(payload)
       .then((res) => res.json())
-      .catch((e) => consoleErr(e));
+      .catch((e) => {
+        process.stdout.write(`\n😱 No internet connection available!
+        Check for details below 👇\n`);
+        process.stderr.write(`\n${JSON.stringify(e)}\n`);
+        process.exit();
+      });
   packet.current = await packet.response.version;
   packet.user = pjson.version;
   // eslint-disable-next-line   no-invalid-this
@@ -43,14 +49,16 @@ async function takeAction() {
 async function upgradeLocal(res) {
   await fs.writeFileSync('./package.json', JSON.stringify(res, null, '\t'));
   await npmi();
+  await process.stdout.write('Updated! 👍');
 }
 
 function npmi() {
   exec('npm i && npm i node-fetch', function(error, stdout, stderr) {
     // consoleOut('\nstdout: ' + stdout);
     // consoleOut('\nstderr: ' + stderr);
-    if (error !== null) {
+    if (error) {
       // consoleErr('exec error: ' + error);
+      process.exit();
     }
   });
   consoleOut('\n Updating... 🎉\n');
