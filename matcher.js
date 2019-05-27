@@ -1,23 +1,18 @@
-const _updater = require('./src/matcher-updater');
-const _summon = require('./src/matcher-summon');
+const vorpal = new require('vorpal')();
+const {commands} = require('./src/matcher-commands.js');
 
-if (require('./.env_vars.json').ENV === 'PROD') {
-  _updater = require('./node_modules/@matcher-cli/main/src/matcher-updater');
-  _summon = require('./node_modules/@matcher-cli/main/src/matcher-summon');
+vorpal
+.delimiter('matcher-cli > ')
+.show();
+
+vorpal
+.command('matcher <query>', `
+  start: Checks, and updates matcher.js, and deploys matcher.js on local server.
+  clear: Clears console, and exits.
+ `)
+.action(vorpalify);
+
+function vorpalify(args) {
+  const query = args.query;
+  eval(`commands.${query}()`);
 }
-
-const {updateModules} = _updater;
-const {summon} = _summon;
-
-function start() {
-  if (updateModules.isOutdated()) {
-    try {
-      updateModules.takeAction();
-    } catch (e) {
-      process.stderr.write(e);
-    }
-  }
-  summon();
-}
-
-start();
