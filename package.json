@@ -1,7 +1,7 @@
 {
 	"name": "matcher",
 	"version": "0.1.0",
-	"description": "Node-based CLI utility for matcher.js",
+	"description": "Node-based CLI utility for matcher.js 🎈",
 	"main": "matcher.js",
 	"scripts": {
 		"build:lint": "node_modules/eslint/bin/eslint.js --fix matcher.js src",
@@ -36,7 +36,7 @@
 		"eslint-config-google": "^0.13.0",
 		"puppeteer": "^1.17.0",
 		"terser": "^4.0.0",
-		"@matcher-cli/dev": "https://github.com/rexagod/matcher-cli.git#develop"
+		"@matcher-cli/main": "https://github.com/rexagod/matcher-cli.git#main"
 	},
 	"dependencies": {
 		"live-server": "^1.2.1",
