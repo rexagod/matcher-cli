@@ -1,11 +1,11 @@
 /*
 * `orbify` will work for TWO images at a time
-* which maybe then compared with each other
-* to any number of images the user may supply
+* which can then be compared with any other
+* images that user may supply in the command
 */
 
-function orbify(images) {
-  console.log(images);
+function orbify({X, Y}) {
+  console.log(X, Y);
 }
 
 exports.orbify = orbify;
