@@ -1,3 +1,16 @@
+/*
+*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*  This module was incorporated due to the fact that
+*  `npm update` ONLY updates the dependencies based
+*  on the `package.json` file, which may be outdated.
+*  Also, this will ensure that "extraneous" packages,
+*  i.e., the ones natively included in node, actually
+*  are installed on the user's local since npm will
+*  frequently overlook those packages and thereby,
+*  causing the build to fail.
+*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
 const fs = require('fs');
 const exec = require('child_process').exec;
 const fetch = require('node-fetch');

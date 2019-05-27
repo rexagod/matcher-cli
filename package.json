@@ -35,7 +35,8 @@
 		"eslint": "^5.16.0",
 		"eslint-config-google": "^0.13.0",
 		"puppeteer": "^1.17.0",
-		"terser": "^4.0.0"
+		"terser": "^4.0.0",
+		"@matcher-cli/dev": "https://github.com/rexagod/matcher-cli.git#develop"
 	},
 	"dependencies": {
 		"live-server": "^1.2.1",
