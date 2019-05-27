@@ -15,6 +15,7 @@ module.exports = {
   },
   'rules': {
     'eol-last': 'warn',
-    'require-jsdoc': 'off'
+    'require-jsdoc': 'off',
+    'no-octal': 'off'
   },
 };

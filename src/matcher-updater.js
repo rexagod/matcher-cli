@@ -66,7 +66,7 @@ async function upgradeLocal(res) {
 }
 
 function npmi() {
-  exec('npm i && npm i node-fetch', function(error, stdout, stderr) {
+  exec(envVars.QUERY, function(error, stdout, stderr) {
     // consoleOut('\nstdout: ' + stdout);
     // consoleOut('\nstderr: ' + stderr);
     if (error) {

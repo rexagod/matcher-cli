@@ -9,6 +9,7 @@ if (require('../.env_vars.json').ENV === 'PROD') {
 const {updateModules} = _updater;
 const {summon} = _summon;
 
+// separate logic for start(server) and update?
 function start() {
   if (updateModules.isOutdated()) {
     try {
@@ -21,7 +22,7 @@ function start() {
 }
 
 function clear() {
-	process.stdout.write('\033c');
+  process.stdout.write('\\033c');
 }
 
 exports.commands = {start: start, clear: clear};
