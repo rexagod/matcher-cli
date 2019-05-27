@@ -13,13 +13,14 @@ function summoner() {
 function initiateServer() {
   exec(`live-server ${envVars.MATCHER_PATH} --quiet --port=9990 --no-browser &`,
       function(error, stdout, stderr) {
-        // process.stdout.write(stdout);
-        // process.stderr.write(stderr);
+        process.stdout.write(stdout);
+        process.stderr.write(stderr);
         if (error) {
-        // process.stderr.write(error);
-          process.exit();
+        process.stderr.write(error);
+        process.exit();
         }
       });
+  process.stdout.write("✌ Server's up!");
 }
 
 async function invoke() {
@@ -27,7 +28,15 @@ async function invoke() {
       {args: ['--no-sandbox', '--headless', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   await page.goto(`http://${envVars.HOST}:${envVars.PORT}`);
-  // get points etc.
+  /*
+  * ~~~~~~~~~~~~~~~
+  * injection point
+  * ~~~~~~~~~~~~~~~
+  * relevant key points will be "given out"
+  * from this space once a stable connection
+  * with the above locally deployed server
+  * is established w/ appropriate commands
+  */
   await browser.close();
 }
 
