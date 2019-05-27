@@ -4,7 +4,7 @@ const envVars = require('../.env_vars');
 
 function summoner() {
   initiateServer();
-  invoke({});
+  invoke();
   // eslint-disable-next-line no-invalid-this
   const {summon: self} = this;
   return self;

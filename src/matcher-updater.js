@@ -17,9 +17,9 @@ async function isOutdated() {
   packet.response = await fetch(payload)
       .then((res) => res.json())
       .catch((e) => {
-        process.stdout.write(`\n😱 No internet connection available!
+        consoleOut(`\n😱 No internet connection available!
         Check for details below 👇\n`);
-        process.stderr.write(`\n${JSON.stringify(e)}\n`);
+        consoleErr(`\n${JSON.stringify(e)}\n`);
         process.exit();
       });
   packet.current = await packet.response.version;
@@ -40,7 +40,7 @@ async function takeAction() {
     consoleOut(`\n You are all set!
     Current version: ${packet.current} ✔ \n`);
   } else {
-    consoleErr(`\n 😱 Found: ${packet.user} 
+    consoleErr(`\n 😱 Found: ${packet.user}
     ▶ Current: ${packet.current}`);
     upgradeLocal(packet.response);
   }
