@@ -16,11 +16,11 @@ function initiateServer() {
         process.stdout.write(stdout);
         process.stderr.write(stderr);
         if (error) {
-        process.stderr.write(error);
-        process.exit();
+          process.stderr.write(error);
+          process.exit();
         }
       });
-  process.stdout.write("✌ Server's up!");
+  process.stdout.write('✌ Server\'s up!');
 }
 
 async function invoke() {
