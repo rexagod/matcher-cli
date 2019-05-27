@@ -4,11 +4,10 @@
 	"description": "Node-based CLI utility for matcher.js",
 	"main": "matcher.js",
 	"scripts": {
-		"build:babelify": "node_modules/@babel/cli/bin/babel.js matcher.js -d lib",
-		"build:lint": "node_modules/eslint/bin/eslint.js matcher.js src",
-		"build:uglify": "node_modules/uglify-js/bin/uglifyjs --compress --mangle --warn lib/matcher.js -o build/matcher.js",
-		"build": "npm run build:lint && npm run build:babelify && npm run build:uglify",
-		"start": "node build/matcher.js"
+		"build:lint": "node_modules/eslint/bin/eslint.js --fix matcher.js src",
+		"build:terser": "node_modules/terser/bin/uglifyjs matcher.js --output matcher.unc.min.js",
+		"build": "npm run build:lint && npm run build:terser",
+		"start": "node matcher.unc.min.js"
 	},
 	"repository": {
 		"type": "git",
@@ -32,21 +31,15 @@
 	},
 	"homepage": "https://github.com/rexagod/matcher-cli#readme",
 	"devDependencies": {
-		"@babel/cli": "^7.4.4",
-		"@babel/core": "^7.4.5",
-		"@babel/preset-env": "^7.4.5",
-		"babel-eslint": "^10.0.1",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"balanced-match": "^1.0.0",
 		"eslint": "^5.16.0",
 		"eslint-config-google": "^0.13.0",
-		"uglify-js": "^3.5.15"
+		"puppeteer": "^1.17.0",
+		"terser": "^4.0.0"
 	},
 	"dependencies": {
 		"live-server": "^1.2.1",
 		"node-fetch": "^2.6.0",
-		"puppeteer": "^1.16.0",
-		"underscore": "^1.9.1",
 		"vorpal": "^1.12.0"
 	}
 }

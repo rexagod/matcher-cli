@@ -4,14 +4,13 @@ module.exports = {
     'es6': true,
     'node': true
   },
-  'extends': ["google"],
+  'extends': 'google',
   'globals': {
     'Atomics': 'readonly',
     'SharedArrayBuffer': 'readonly'
   },
-  "parser": "babel-eslint",
   'parserOptions': {
-    'ecmaVersion': 6,
+    'ecmaVersion': 8,
     'sourceType': 'module'
   },
   'rules': {
