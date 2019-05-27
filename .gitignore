@@ -1,5 +1,8 @@
 # node packages
 node_modules
 
+# env
+.env_vars.json
+
 # config
-# .vscode
+.vscode
