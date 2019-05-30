@@ -16,7 +16,7 @@ const exec = require('child_process').exec;
 const fetch = require('node-fetch');
 const envVars = require('../.env_vars.json');
 const pjson = require('../package.json');
-const {ping, error} = require('../utils/matcher-pings');
+const {ping, error} = require('../utils/matcher-pings').pings;
 
 function isLoading(bool) {
   if (bool) {

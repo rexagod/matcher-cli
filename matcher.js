@@ -14,10 +14,13 @@ if (envVars.ENV === 'PROD') {
 const {commands} = _commands;
 
 vorpal
-    .command('matcher <query>', `update: Updates matcher environment.
-         clear: Clears console, and exits.
-         matches: Outputs pairs of matched key-points.
-         corners: Outputs all eligible match points.
+    .command('matcher <query>', `
+          !USAGE COMMANDS!
+
+          update: Updates matcher environment.
+          clear: Clears console, and exits.
+          matches: Outputs pairs of matched key-points.
+          corners: Outputs all eligible match points.
          `)
     .action(vorpalify);
 

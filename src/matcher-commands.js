@@ -1,6 +1,6 @@
 const _updater = require('./matcher-updater');
 const _summon = require('./matcher-summon');
-const {error} = require('../utils/matcher-pings');
+const {error} = require('../utils/matcher-pings').pings;
 
 if (require('../.env_vars.json').ENV === 'PROD') {
   _updater = require('../node_modules/@matcher-cli/main/src/matcher-updater');

@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const exec = require('child_process').exec;
 const envVars = require('../.env_vars');
 const {matcherInitQuery} = require('../utils/matcher-init-query');
-const {ping, error} = require('../utils/matcher-pings');
+const {ping, error} = require('../utils/matcher-pings').pings;
 
 const summoner = (function() {
   initiateServer();
