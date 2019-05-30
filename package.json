@@ -34,11 +34,11 @@
 		"balanced-match": "^1.0.0",
 		"eslint": "^5.16.0",
 		"eslint-config-google": "^0.13.0",
-		"puppeteer": "^1.17.0",
-		"terser": "^4.0.0",
-		"@matcher-cli/main": "https://github.com/rexagod/matcher-cli.git#main"
+		"terser": "^4.0.0"
 	},
 	"dependencies": {
+		"@matcher-cli/main": "https://github.com/rexagod/matcher-cli.git#main",
+		"puppeteer": "^1.17.0",
 		"live-server": "^1.2.1",
 		"node-fetch": "^2.6.0",
 		"vorpal": "^1.12.0"

@@ -1,5 +1,6 @@
 const _updater = require('./matcher-updater');
 const _summon = require('./matcher-summon');
+const {error} = require('../utils/matcher-pings');
 
 if (require('../.env_vars.json').ENV === 'PROD') {
   _updater = require('../node_modules/@matcher-cli/main/src/matcher-updater');
@@ -7,22 +8,20 @@ if (require('../.env_vars.json').ENV === 'PROD') {
 }
 
 const {updateModules} = _updater;
-const {summon} = _summon;
+const {summoner} = _summon.summon;
 
-// separate logic for start(server) and update?
-function start() {
+function update() {
   if (updateModules.isOutdated()) {
     try {
       updateModules.takeAction();
     } catch (e) {
-      process.stderr.write(e);
+      error(e);
     }
   }
-  summon();
 }
 
 function clear() {
-  process.stdout.write('\u001b[2J\u001b[0;0H');
+  error('\u001b[2J\u001b[0;0H');
 }
 
-exports.commands = {start: start, clear: clear};
+exports.commands = {summoner: summoner, update: update, clear: clear};

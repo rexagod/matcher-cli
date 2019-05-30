@@ -16,10 +16,11 @@ const exec = require('child_process').exec;
 const fetch = require('node-fetch');
 const envVars = require('../.env_vars.json');
 const pjson = require('../package.json');
+const {ping, error} = require('../utils/matcher-pings');
 
 function isLoading(bool) {
   if (bool) {
-    consoleOut('⏳ ');
+    ping('⏳ ');
   }
 }
 
@@ -30,9 +31,9 @@ async function isOutdated() {
   packet.response = await fetch(payload)
       .then((res) => res.json())
       .catch((e) => {
-        consoleOut(`\n😱 No internet connection available!
+        error(`\nNo internet connection available!
         Check for details below 👇\n`);
-        consoleErr(`\n${JSON.stringify(e)}\n`);
+        error(`\n${JSON.stringify(e)}\n`);
         process.exit();
       });
   packet.current = await packet.response.version;
@@ -50,10 +51,11 @@ async function isOutdated() {
 async function takeAction() {
   const packet = await isOutdated();
   if (!packet.bool) {
-    consoleOut(`\n You are all set!
-    Current version: ${packet.current} ✔ \n`);
+    ping(`\nYou are all set!
+    Current version: ${packet.current}\n`);
+    process.exit();
   } else {
-    consoleErr(`\n 😱 Found: ${packet.user}
+    error(`\nFound: ${packet.user}
     ▶ Current: ${packet.current}`);
     upgradeLocal(packet.response);
   }
@@ -62,23 +64,20 @@ async function takeAction() {
 async function upgradeLocal(res) {
   await fs.writeFileSync('./package.json', JSON.stringify(res, null, '\t'));
   await npmi();
-  await consoleOut('Done! 👍');
+  await ping('Done!');
 }
 
 function npmi() {
   exec(envVars.QUERY, function(error, stdout, stderr) {
-    // consoleOut('\nstdout: ' + stdout);
-    // consoleOut('\nstderr: ' + stderr);
+    ping('\nstdout: ' + stdout);
+    ping('\nstderr: ' + stderr);
     if (error) {
-      // consoleErr('exec error: ' + error);
+      error('exec error: ' + error);
       process.exit();
     }
   });
-  consoleOut('\n Updating... 🎉\n');
+  ping('\n Updating...\n');
 }
-
-const consoleErr = (arg) => process.stderr.write(arg);
-const consoleOut = (arg) => process.stdout.write(arg);
 
 exports.updateModules = {
   isOutdated: isOutdated,
