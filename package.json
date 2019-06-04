@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"@matcher-cli/main": "https://github.com/rexagod/matcher-cli.git#main",
+		"@matcher-core/main": "https://github.com/rexagod/matcher-core.git#cli-dev",
 		"puppeteer": "^1.17.0",
 		"live-server": "^1.2.1",
 		"node-fetch": "^2.6.0",

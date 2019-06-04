@@ -53,7 +53,7 @@ async function invoke() {
       }
     }
   }
-  await page.goto(`http://${envVars.HOST}:${envVars.PORT}`);
+  await page.goto(`http://${envVars.HOST}:${envVars.PORT}/${envVars.SUB_PATH}`);
   page.on('console', (args) => {
     const text = args._text;
     getDistinctCorners(text);
