@@ -1,6 +1,6 @@
 # [`matcher-cli`](/): CLI utility for [`matcher-core`](https://github.com/publiclab/matcher-core)
 
-[![Build Status](https://travis-ci.org/publiclab/matcher-cli.svg?branch=ci-ops)](https://travis-ci.org/publiclab/matcher-cli) ![LICENCE](https://img.shields.io/badge/license-BSD--2--Clause-green.svg)
+[![Build Status](https://travis-ci.org/publiclab/matcher-cli.svg?branch=ci-ops)](https://travis-ci.org/publiclab/matcher-cli) ![LICENCE](https://img.shields.io/badge/license-GNU--General--Public--License--v3.0-green.svg)
 
 ## Description
 
