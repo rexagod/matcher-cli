@@ -58,4 +58,4 @@ Points are stated according in order of occurrence of their code segments.
 
 ## LICENSE
 
-[BSD-2-Clause](/LICENSE)
+[GNU-General-Public-License-v3.0](/LICENSE)
