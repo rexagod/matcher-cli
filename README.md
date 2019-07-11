@@ -4,6 +4,8 @@
 
 ## Description
 
+**Note: This library primarily consists of utilities for developers, and not necessarily required for projects which are using [`matcher-core`](https://github.com/publiclab/matcher-core) directly, but can be useful as a toolkit for diagnostics and debugging purposes.**
+
 A Node-based CLI utility for headlessly testing custom matcher-core configurations, this module eases any development process on the matcher-core library by allowing the user to run a set of commands on their locally puppeteer-deployed Chromium environment in a headless manner, i.e., right from the CLI, without the need to open the browser whatsoever, be it testing, demonstration, debugging issues, etc.
 
 `matcher-cli` enables headless support for all of these tasks, and can easily integrate with your choice of CI to automate any of the above tasks right inside your CI. For more details on automating tasks and cross-posting to different sites (including issues and PRs on GitHub), checkout the [`ci-ops`](https://github.com/publiclab/matcher-cli/tree/ci-ops) branch of this repository.  
