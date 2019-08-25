@@ -1,6 +1,6 @@
 {
-	"name": "matcher",
-	"version": "0.1.0",
+	"name": "matcher-cli",
+	"version": "0.9.0",
 	"description": "Node-based CLI utility for matcher.js 🎈",
 	"main": "matcher.js",
 	"scripts": {
