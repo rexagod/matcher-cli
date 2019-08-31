@@ -31,6 +31,7 @@
 	},
 	"homepage": "https://github.com/rexagod/matcher-cli#readme",
 	"devDependencies": {
+		"husky": "1.0.1",
 		"balanced-match": "^1.0.0",
 		"eslint": "^5.16.0",
 		"eslint-config-google": "^0.13.0",
