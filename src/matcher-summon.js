@@ -3,6 +3,8 @@ const exec = require('child_process').exec;
 const envVars = require('../.env_vars');
 const {matcherInitQuery} = require('../utils/matcher-init-query');
 const {ping, error} = require('../utils/matcher-pings').pings;
+const getDistinctCorners = require('../utils/get-distinct-corners');
+const getDistinctMatches = require('../utils/get-distinct-matches');
 
 const summoner = (function() {
   initiateServer();
@@ -34,25 +36,8 @@ async function invoke() {
   matches=[];
   bufferInterval=1000;
   // SHARED-SCOPE UTILS
-  function getDistinctCorners(string) {
-    if (isCorner(string)) {
-      const truncatedString = (string).substring(8);
-      const truncatedObject = JSON.parse(truncatedString);
-      if (corners.indexOf(truncatedObject) === -1 && corners.length < 500) {
-        corners.push(truncatedObject);
-      }
-    }
-  }
-  function getDistinctMatches(string) {
-    if (isPair(string)) {
-      const truncatedString = (string).substring(6);
-      const truncatedObject = JSON.parse(truncatedString);
-      if (matches.indexOf(truncatedObject) === -1
-      && matches.length < truncatedObject.population) {
-        matches.push(truncatedObject);
-      }
-    }
-  }
+  
+  
   await page.goto(`http://${envVars.HOST}:${envVars.PORT}/${envVars.SUB_PATH}`);
   page.on('console', (args) => {
     const text = args._text;
